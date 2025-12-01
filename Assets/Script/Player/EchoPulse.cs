@@ -12,6 +12,7 @@ public class EchoPulse : MonoBehaviour
     public bool IsActive => _active;
     public float CurrentRadius => _radius;
 
+    public GameObject _echo;
 
     void Update()
     {
@@ -19,6 +20,7 @@ public class EchoPulse : MonoBehaviour
         {
             _radius = 0f;
             _active = true;
+            _echo.SetActive(_active);
         }
 
         if (_active)
@@ -31,6 +33,7 @@ public class EchoPulse : MonoBehaviour
             if (_radius >= maxRadius)
             {
                 _active = false;
+                _echo.SetActive(_active);
                 Shader.SetGlobalFloat("_EchoRadius", 0f);
             }
         }
